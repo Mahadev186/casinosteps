@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CasinoSteps.com - Your Path to Winning!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #120e29; /* Deep indigo-purple */
+            --secondary-dark: #200d3d; /* Darker, richer purple */
+            --tertiary-dark: #0a071e; /* Almost black, for depth */
+            --accent-gold: #ffc72c; /* Brighter, vibrant gold */
+            --accent-gold-light: #ffd75e;
+            --accent-green: #2ecc71; /* WhatsApp green */
+            --accent-green-dark: #27ae60;
+            --text-light: #e0e0e0;
+            --text-lighter: #f8f8f8;
+            --text-medium: #bbb;
+            --text-dark: #333;
+            --shadow-light: rgba(0, 0, 0, 0.2);
+            --shadow-medium: rgba(0, 0, 0, 0.4);
+            --shadow-strong: rgba(0, 0, 0, 0.7);
+            --border-glow: rgba(255, 199, 44, 0.6);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle at top left, var(--secondary-dark) 0%, var(--primary-dark) 70%, var(--tertiary-dark) 100%);
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden; /* Prevent horizontal scroll due to animations */
+            line-height: 1.6;
+        }
+
+        /* Global reset for better consistency */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        button, a.whatsapp-btn {
+            cursor: pointer;
+            outline: none;
+            border: none;
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeInSlideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-80px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7), 0 0 15px var(--accent-green); }
+            50% { transform: scale(1.03); box-shadow: 0 0 0 15px rgba(46, 204, 113, 0), 0 0 25px var(--accent-green-dark); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7), 0 0 15px var(--accent-green); }
+        }
+
+        @keyframes textGlow {
+            0%, 100% { text-shadow: 0 0 8px var(--text-lighter), 0 0 15px var(--text-lighter); }
+            50% { text-shadow: 0 0 15px var(--accent-gold), 0 0 30px var(--accent-gold-light); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .header {
+            background: linear-gradient(90deg, #2a0b3c 0%, #120e29 100%);
+            color: var(--text-lighter);
+            padding: 80px 20px 60px; /* More vertical padding */
+            text-align: center;
+            font-size: 3.5em;
+            font-weight: 800;
+            letter-spacing: 4px;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+            border-bottom-left-radius: 40px; /* More rounded */
+            border-bottom-right-radius: 40px;
+            box-shadow: 0 12px 40px var(--shadow-strong);
+            animation: fadeInSlideUp 1.8s ease-out;
+            position: relative;
+            z-index: 10;
+            overflow: hidden; /* For pseudo-elements */
+        }
+        .header::before { /* Subtle background pattern/texture */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(-45deg, rgba(255,255,255,.05), rgba(255,255,255,.05) 2px, transparent 2px, transparent 5px);
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.3em;
+            animation: textGlow 4s infinite alternate; /* More vibrant glow */
+            background: linear-gradient(90deg, var(--accent-gold-light), var(--accent-gold), var(--accent-gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block; /* Required for text-fill-color */
+        }
+
+        .slogan {
+            font-size: 0.75em;
+            color: var(--text-medium);
+            margin-top: 20px;
+            letter-spacing: 2px;
+            animation: slideInLeft 2.5s ease-out;
+            font-weight: 400;
+        }
+
+        .intro-section {
+            background: linear-gradient(145deg, var(--secondary-dark), var(--primary-dark));
+            padding: 50px 40px;
+            margin: 50px auto;
+            max-width: 1200px;
+            border-radius: 20px; /* More rounded */
+            box-shadow: 0 15px 40px var(--shadow-strong);
+            color: var(--text-light);
+            text-align: justify;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeInSlideUp 2s ease-out;
+            position: relative;
+            overflow: hidden;
+            z-index: 5;
+        }
+        .intro-section::before { /* Subtle overlay */
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            z-index: -1;
+        }
+        .intro-section h2 {
+            color: var(--accent-gold);
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.8em;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(255, 199, 44, 0.5);
+        }
+        .intro-section p {
+            margin-bottom: 25px;
+            font-weight: 300;
+            font-size: 1.05em;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px; /* More space between cards */
+            padding: 60px 30px;
+            max-width: 1300px; /* Slightly wider grid */
+            margin: 50px auto;
+            background: linear-gradient(160deg, var(--tertiary-dark), var(--primary-dark));
+            border-radius: 20px;
+            box-shadow: 0 15px 40px var(--shadow-strong);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            z-index: 4;
+        }
+
+        .image-card {
+            background: linear-gradient(145deg, #2e1d44, #1b0c30); /* Darker, richer gradient for cards */
+            border-radius: 18px; /* More rounded cards */
+            box-shadow: 0 10px 30px var(--shadow-strong);
+            overflow: hidden;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.5s ease-in-out, border-color 0.5s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        .image-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 25px 60px var(--shadow-strong);
+            border-color: var(--accent-gold);
+        }
+        .image-card img {
+            width: 100%;
+            height: 250px; /* Taller images */
+            object-fit: contain; /* Changed from 'cover' to 'contain' */
+            border-bottom: 3px solid rgba(255, 255, 255, 0.15);
+            transition: transform 0.4s ease-in-out;
+            background-color: var(--tertiary-dark); /* Added a background color for letterboxing */
+        }
+        .image-card:hover img {
+            transform: scale(1.05);
+        }
+        .image-card-content {
+            padding: 25px;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: var(--text-lighter);
+        }
+        .image-card-content h3 {
+            color: var(--accent-gold-light);
+            font-size: 1.8em;
+            margin-top: 0;
+            margin-bottom: 12px;
+            font-weight: 800;
+            text-shadow: 0 0 10px rgba(255, 199, 44, 0.3);
+        }
+        .image-card-content p {
+            font-size: 1em;
+            color: var(--text-medium);
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+        .image-card-content .offer {
+            font-weight: 700;
+            color: #ff6b6b; /* Brighter red for offers */
+            margin-top: 20px;
+            font-size: 1.2em;
+            text-shadow: 0 0 8px rgba(255, 107, 107, 0.5);
+        }
+        .image-card .whatsapp-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--accent-green), var(--accent-green-dark));
+            color: #ffffff;
+            padding: 15px 35px;
+            border-radius: 40px; /* More rounded */
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 700;
+            margin-top: 25px;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.5);
+            letter-spacing: 0.5px;
+        }
+        .image-card .whatsapp-btn:hover {
+            background: linear-gradient(45deg, var(--accent-green-dark), var(--accent-green));
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(46, 204, 113, 0.7);
+        }
+
+        .rewards-section {
+            background: linear-gradient(145deg, var(--secondary-dark), var(--primary-dark));
+            padding: 50px 40px;
+            margin: 50px auto;
+            max-width: 1200px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px var(--shadow-medium);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeInSlideUp 2.5s ease-out;
+            position: relative;
+            overflow: hidden;
+            z-index: 3;
+        }
+        .rewards-section::before { /* Subtle diagonal lines */
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: repeating-linear-gradient(45deg, rgba(255,255,255,.02), rgba(255,255,255,.02) 2px, transparent 2px, transparent 10px);
+            opacity: 0.8;
+            z-index: -1;
+        }
+        .rewards-section h2 {
+            color: var(--accent-gold);
+            margin-bottom: 40px;
+            font-size: 2.8em;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(255, 199, 44, 0.5);
+        }
+        .rewards-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        .rewards-list li {
+            background: linear-gradient(145deg, #2e1d44, #1b0c30);
+            padding: 25px 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px var(--shadow-strong);
+            font-size: 1.2em;
+            color: var(--text-lighter);
+            flex: 1 1 calc(50% - 60px); /* Adjusted for more gap */
+            max-width: calc(50% - 60px);
+            text-align: left;
+            position: relative;
+            padding-left: 70px; /* Increased padding for icon */
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), background 0.4s ease, border-color 0.4s ease;
+            font-weight: 300;
+            display: flex; /* Helps in vertical alignment */
+            align-items: center; /* Vertically center content */
+        }
+        .rewards-list li:hover {
+            transform: translateY(-8px);
+            background: linear-gradient(145deg, #3a225a, #2e1d44);
+            border-color: var(--accent-gold);
+        }
+        .rewards-list li::before {
+            content: '💎 '; /* Diamond emoji as bullet */
+            position: absolute;
+            left: 25px;
+            font-size: 1.8em; /* Larger emoji */
+            line-height: 1;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: pulseText 2s infinite alternate; /* Subtle pulse on bullet */
+        }
+        @keyframes pulseText {
+            0% { transform: translateY(-50%) scale(1); opacity: 0.8;}
+            50% { transform: translateY(-50%) scale(1.1); opacity: 1;}
+            100% { transform: translateY(-50%) scale(1); opacity: 0.8;}
+        }
+
+        .payment-methods {
+            text-align: center;
+            padding: 60px 30px;
+            background: linear-gradient(145deg, var(--primary-dark), var(--secondary-dark));
+            border-radius: 20px;
+            max-width: 1200px;
+            margin: 50px auto;
+            box-shadow: 0 15px 40px var(--shadow-strong);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            animation: fadeInSlideUp 2.8s ease-out;
+            position: relative;
+            overflow: hidden;
+            z-index: 2;
+        }
+        .payment-methods h2 {
+            color: var(--accent-gold);
+            margin-bottom: 40px;
+            font-size: 2.8em;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(255, 199, 44, 0.5);
+        }
+        .payment-icons {
+
+        .payment-icons img {
+            height: 70px; /* Even larger icons */
+            width: auto;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px var(--shadow-medium);
+            transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out, filter 0.4s ease-in-out;
+            background-color: #fff; /* White background for visibility of logos */
+            padding: 10px;
+            filter: brightness(0.9); /* Slightly dim until hover */
+        }
+        .payment-icons img:hover {
+            transform: translateY(-10px) scale(1.1);
+            box-shadow: 0 12px 30px var(--shadow-strong);
+            filter: brightness(1.1); /* Brighter on hover */
+        }
+        .payment-methods p {
+            margin-top: 40px;
+            font-size: 1.05em;
+            color: var(--text-medium);
+            font-weight: 300;
+        }
+.payment-icons::-webkit-scrollbar {
+  display: none;
+}
+.payment-icons {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.payment-icons::-webkit-scrollbar {
+  display: none;
+}
+.payment-icons {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
+        .whatsapp-link-section {
+            text-align: center;
+            padding: 60px 30px;
+            background: linear-gradient(90deg, var(--accent-green), var(--accent-green-dark));
+            color: #ffffff;
+            margin: 50px auto;
+            max-width: 1200px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(46, 204, 113, 0.8);
+            animation: fadeInSlideUp 3s ease-out;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .whatsapp-link-section h2 {
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            font-weight: 800;
+            text-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+        }
+        .whatsapp-link-section a {
+            display: inline-block;
+            background-color: #25d366; /* Standard WhatsApp green */
+            color: #ffffff;
+            padding: 20px 50px;
+            border-radius: 60px; /* More prominent pill shape */
+            text-decoration: none;
+            font-size: 1.6em;
+            font-weight: 800;
+            transition: all 0.4s ease-in-out;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            animation: pulseGlow 2.5s infinite; /* Enhanced pulsing glow */
+            letter-spacing: 1px;
+        }
+        .whatsapp-link-section a:hover {
+            background-color: #1da84d;
+            transform: translateY(-8px) scale(1.04);
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.6);
+            animation: none; /* Stop pulsing on hover */
+        }
+        .whatsapp-link-section p {
+            margin-top: 25px;
+            font-size: 1em;
+            color: var(--text-light);
+            font-weight: 300;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background-color: var(--tertiary-dark);
+            color: #555;
+            font-size: 0.95em;
+            margin-top: auto;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            box-shadow: 0 -8px 30px var(--shadow-strong);
+            font-weight: 300;
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 1200px) {
+            .image-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 30px;
+            }
+            .image-card img {
+                height: 220px;
+            }
+            .image-card-content h3 {
+                font-size: 1.6em;
+            }
+            .image-card-content .offer {
+                font-size: 1.1em;
+            }
+            .rewards-list li {
+                flex: 1 1 calc(100% - 40px);
+                max-width: calc(100% - 40px);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .header {
+                font-size: 3em;
+                padding: 60px 15px 40px;
+            }
+            .intro-section h2, .rewards-section h2, .payment-methods h2 {
+                font-size: 2.4em;
+            }
+            .image-grid {
+                padding: 40px 20px;
+            }
+            .rewards-list li {
+                font-size: 1.1em;
+            }
+            .payment-icons img {
+                height: 60px;
+            }
+            .whatsapp-link-section h2 {
+                font-size: 2em;
+            }
+            .whatsapp-link-section a {
+                padding: 18px 40px;
+                font-size: 1.4em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                font-size: 2.5em;
+                padding: 50px 15px 30px;
+                letter-spacing: 3px;
+            }
+            .slogan {
+                font-size: 0.7em;
+                margin-top: 15px;
+            }
+            .intro-section, .image-grid, .rewards-section, .payment-methods, .whatsapp-link-section {
+                padding: 35px 20px;
+                margin: 30px auto;
+            }
+            .image-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 25px;
+            }
+            .image-card img {
+                height: 200px;
+            }
+            .image-card-content h3 {
+                font-size: 1.5em;
+            }
+            .image-card-content p {
+                font-size: 0.9em;
+            }
+            .image-card-content .offer {
+                font-size: 1em;
+            }
+            .whatsapp-link-section a {
+                padding: 15px 30px;
+                font-size: 1.2em;
+            }
+            .payment-icons img {
+                height: 50px;
+                padding: 6px;
+            }
+            .rewards-list li {
+                padding: 20px 20px 20px 50px;
+                font-size: 1em;
+            }
+            .rewards-list li::before {
+                font-size: 1.6em;
+                left: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                font-size: 2em;
+                padding: 40px 10px 25px;
+                letter-spacing: 2px;
+            }
+            .slogan {
+                font-size: 0.65em;
+                margin-top: 10px;
+            }
+            .intro-section, .image-grid, .rewards-section, .payment-methods, .whatsapp-link-section {
+                padding: 25px 15px;
+                margin: 20px auto;
+            }
+            .image-grid {
+                grid-template-columns: 1fr; /* Single column on smallest screens */
+                gap: 20px;
+            }
+            .image-card img {
+                height: 180px;
+            }
+            .image-card-content h3 {
+                font-size: 1.3em;
+            }
+            .image-card-content .offer {
+                font-size: 0.9em;
+            }
+            .payment-icons img {
+                height: 45px;
+            }
+            .whatsapp-link-section h2 {
+                font-size: 1.8em;
+            }
+            .whatsapp-link-section a {
+                padding: 12px 25px;
+                font-size: 1em;
+                border-radius: 40px;
+            }
+            .rewards-list li {
+                padding: 18px 15px 18px 45px;
+                font-size: 0.95em;
+            }
+            .rewards-list li::before {
+                font-size: 1.4em;
+                left: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <h1>CasinoSteps.com</h1>
+        <p class="slogan">Your Ultimate Guide to Online Gaming Success!</p>
+    </header>
+
+    <section class="intro-section">
+        <h2>Welcome to CasinoSteps.com!</h2>
+        <p>
+            Welcome to Casinosteps.com, your ultimate guide to the best & Trusted online gaming websites in India. Online casinos are becoming increasingly popular in India and our expert and Personal Clients are reviewed and Checked these websites that can help you in discovering the top-rated Sportsbook and Casino Sites in India. Whether you’re a seasoned player or a newcomer to the world of online gambling, we’ve got you covered.
+        </p>
+        <p>
+            At Casinosteps, we deep dive into every detail, from game variety and bonuses to security and payment options, ensuring a safe and enjoyable gaming experience. We’ve handpicked the finest selection of best online gaming websites, each offering a thrilling array of games, exciting bonuses, and a secure and safe gaming environment.
+        </p>
+    </section>
+
+    <main>
+        <section class="image-grid">
+            <div class="image-card">
+                <img src="https://i.imgur.com/8QpBtn0.jpeg" alt="FUN88 Casino">
+                <div class="image-card-content">
+                    <h3>FUN88</h3>
+                    <p>Official Global Brand Ambassador: South African Bowler “DALE STEYN”</p>
+                    <p class="offer">Offer: 388% Welcome Bonus</p>
+                    <a href="https://wa.me/919576969369?text=I'm%20interested%20in%20FUN88%20and%20the%20388%25%20Welcome%20Bonus!" target="_blank" class="whatsapp-btn" aria-label="Chat about FUN88 on WhatsApp">
+                        Chat on WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="image-card">
+                <img src="https://i.imgur.com/yDqgJ1t.jpeg" alt="RICH11 Casino">
+                <div class="image-card-content">
+                    <h3>RICH11</h3>
+                    <p>Ameesha Patel is Brand Ambassador For RICH11</p>
+                    <p class="offer">Offer: Get 5% Bonus On Deposits</p>
+                    <a href="https://wa.me/919576969369?text=I'm%20interested%20in%20RICH11%20and%20the%205%25%20Deposit%20Bonus!" target="_blank" class="whatsapp-btn" aria-label="Chat about RICH11 on WhatsApp">
+                        Chat on WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="image-card">
+                <img src="https://i.imgur.com/kS5x8O3.jpeg" alt="MCWCasino">
+                <div class="image-card-content">
+                    <h3>MCWCasino</h3>
+                    <p>Official Global Brand Ambassadors: South African Cricketer “Anrich Nortje”</p>
+                    <p class="offer">Offer: 150% First Deposit Bonus Upto 15,000 INR</p>
+                    <a href="https://wa.me/919576969369?text=I'm%20interested%20in%20MCWCasino%20and%20the%20150%25%20First%20Deposit%20Bonus!" target="_blank" class="whatsapp-btn" aria-label="Chat about MCWCasino on WhatsApp">
+                        Chat on WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="image-card">
+                <img src="https://i.imgur.com/jM8c3jS.png" alt="Stake Casino">
+                <div class="image-card-content">
+                    <h3>Stake</h3>
+                    <p>Main Partner of Everton Football Club and Principal Partner Ultimate Fighting Championship (UFC). Has Stake F1 Formula Racing Team.</p>
+                    <p class="offer">Offer: Get 10% Cashback On Weekly Losses</p>
+                    <a href="https://wa.me/919576969369?text=I'm%20interested%20in%20Stake%20and%20the%2010%25%20Cashback%20Offer!" target="_blank" class="whatsapp-btn" aria-label="Chat about Stake on WhatsApp">
+                        Chat on WhatsApp
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="payment-methods">
+  <h2>Accepted Payment Methods</h2>
+  <div class="payment-icons">
+    <!-- UPI -->
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/UPI_logo.svg/330px-UPI_logo.svg.png" alt="UPI"
+         style="height:50px;width:auto;padding:10px;background:white;border-radius:8px;">
+
+    <!-- Visa -->
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Google_Pay_Logo.svg/330px-Google_Pay_Logo.svg.png" alt="GPay"
+         style="height:50px;width:auto;padding:10px;background:white;border-radius:8px;">
+
+    <!-- RuPay -->
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Rupay-Logo.png/960px-Rupay-Logo.png" alt="RuPay"
+         style="height:50px;width:auto;padding:10px;background:white;border-radius:8px;">
+
+    <!-- Paytm -->
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Paytm_Logo_%28standalone%29.svg/320px-Paytm_Logo_%28standalone%29.svg.png" alt="Paytm"
+         style="height:50px;width:auto;padding:10px;background:white;border-radius:8px;">
+
+    <!-- PhonePe -->
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/PhonePe_Logo.svg/320px-PhonePe_Logo.svg.png" alt="PhonePe"
+         style="height:50px;width:auto;padding:10px;background:white;border-radius:8px;">
+
+
+    <!-- Bitcoin -->
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg" alt="Bitcoin"
+         style="height:50px;width:auto;padding:10px;background:white;border-radius:8px;">
+
+<!-- Tether -->
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Tether_Logo.svg/330px-Tether_Logo.svg.png" alt="Tether"
+         style="height:50px;width:auto;padding:10px;background:white;border-radius:8px;">
+
+
+  </div>
+
+  <p>We support a wide range of secure and convenient payment options, including popular Indian methods like UPI, Paytm, PhonePe, and major credit/debit cards. E-wallets like Skrill and Neteller, and cryptocurrencies like Bitcoin and Ethereum are also accepted for seamless transactions.</p>
+</section>
+
+
+
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 CasinoSteps.com. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
