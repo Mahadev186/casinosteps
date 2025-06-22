@@ -1,0 +1,36 @@
+# Force HTTPS
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Force www (Optional: if you prefer www.casinosteps.com over casinosteps.com)
+# Uncomment the following lines if you want to force www
+# RewriteCond %{HTTP_HOST} !^www\. [NC]
+# RewriteRule ^(.*)$ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Redirect old/broken URLs (Example - replace with actual old paths and new paths)
+# Redirect 301 /old-page.html https://casinosteps.com/new-page
+
+# Set default charset
+AddDefaultCharset UTF-8
+
+# Improve caching (adjust as needed)
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpg "access 1 year"
+  ExpiresByType image/jpeg "access 1 year"
+  ExpiresByType image/gif "access 1 year"
+  ExpiresByType image/png "access 1 year"
+  ExpiresByType image/svg+xml "access 1 year"
+  ExpiresByType text/css "access 1 month"
+  ExpiresByType application/javascript "access 1 month"
+  ExpiresByType application/x-javascript "access 1 month"
+  ExpiresByType text/html "access 1 day"
+</IfModule>
+
+# Disable directory Browse
+Options -Indexes
+
+# Custom error pages (Optional)
+# ErrorDocument 404 /404.html
+# ErrorDocument 500 /500.html
